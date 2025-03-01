@@ -69,7 +69,7 @@ const TravelHomePage = () => {
   );
 
   // Handle input changes
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     if (name === 'price') {
       // Remove non-numeric characters and format price
@@ -161,9 +161,10 @@ const TravelHomePage = () => {
       setImagePreview('');
       setPdfName('');
       setErrors({});
-    } catch (error) {
-      setErrors(prev => ({ ...prev, submit: error.message }));
-    } finally {
+    // } catch (error: Error) {
+    //   setErrors(prev => ({ ...prev, submit: error.message }));
+    // } 
+    }   finally {
       setIsUploading(false);
     }
   };
@@ -195,6 +196,7 @@ const TravelHomePage = () => {
 
       {/* Benefits Section */}
       <div className="max-w-7xl mx-auto py-8 px-4">
+      
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {[
             { icon: <MessageCircle className="w-6 h-6" />, title: 'LIVE Chat Assistance' },
@@ -208,9 +210,9 @@ const TravelHomePage = () => {
             </div>
           ))}
         </div>
-
+        
         {/* Destinations Grid */}
-        <h2 className="text-2xl font-bold text-center mb-8">Pick destinations for your spiritual journey:</h2>
+        <h2 className="text-2xl font-bold text-center mb-8">One click, endless journeys—find the perfect match!</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredDestinations.map((destination, index) => (
             <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md">
@@ -259,23 +261,16 @@ const TravelHomePage = () => {
       >
         <Plus className="w-6 h-6" />
       </button>
-
       {/* Add Destination Modal */}
       {isFormOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4 z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-md max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold">Add New Destination</h2>
+              <h2 className="text-lg font-semibold"><h2 className="text-2xl font-bold text-center mb-8">Your Travel, Your Way – Compare & Book with Trust!</h2></h2>
               <button onClick={() => setIsFormOpen(false)} className="text-gray-500">
                 <X className="w-5 h-5" />
               </button>
             </div>
-
-            {errors.submit && (
-              <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
-                {errors.submit}
-              </div>
-            )}
 
             <form onSubmit={handleSubmit}>
               <div className="space-y-4">
@@ -360,9 +355,9 @@ const TravelHomePage = () => {
                     onChange={handleFileUpload}
                     className="w-full border rounded p-2"
                   />
-                  {errors.itinerary && (
+                  {/* {errors.itinerary && (
                     <p className="text-red-500 text-sm mt-1">{errors.itinerary}</p>
-                  )}
+                  )} */}
                   {pdfName && (
                     <p className="text-sm text-gray-600 mt-1">Selected: {pdfName}</p>
                   )}

@@ -1,12 +1,9 @@
-import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Wanderift - Travel Planning',
-  description: 'Find your perfect trip with Wanderift',
+  title: 'WandeRift',
+  description: 'All trips, one platform—compare and book instantly!',
 }
 
 export default function RootLayout({
@@ -16,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
   )
 }
